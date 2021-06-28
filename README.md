@@ -1,4 +1,5 @@
-# POSH-Ubiquiti
+# PSUniFi
+
 Powershell tools for Ubiquiti Unifi
 
 From https://github.com/justingist/POSH-Ubiquiti
@@ -7,7 +8,7 @@ Easy decryption of the .unf Unifi backup file!
 
 Usage:
 
-```
+```powershell
 Set-ExecutionPolicy Unrestricted -Scope Process
 Import-Module .\PoshUBNT.psm1
 Invoke-UniFiBackupDecryption -FilePath C:\Temp\pathtomybackup.unf
