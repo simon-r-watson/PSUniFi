@@ -12,7 +12,6 @@ function Save-UniFiDecryptedBackup {
 
     $save = $false
     if (Test-Path -Path $outFile) {
-        $ConfirmPreference =
         if ($Force -or $PSCmdlet.ShouldProcess($outFile, 'Overwrite')) {
             $save = $true
         }
