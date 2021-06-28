@@ -34,7 +34,7 @@ function Invoke-UniFiBackupDecryption {
     )
     $outFile = $FilePath.FullName.Replace('.unf', '.tar.gz')
     if (Test-Path -Path $outFile) {
-        if (-not($Force -and ($WhatIfPreference -eq $false))) {
+        if ($Force -eq $false) {
             Write-Warning "$outFile already exists."
         }  
     }
