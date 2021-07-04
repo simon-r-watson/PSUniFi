@@ -1,4 +1,4 @@
-function Invoke-UniFiBackupDecryption {
+function Unprotect-UniFiBackup {
     <#
 
     .NOTES
@@ -10,7 +10,7 @@ function Invoke-UniFiBackupDecryption {
         Output will be a tar.gz in same directory as your initial file. Use your favorite archive tool to open, such as 7-zip.
 
     .EXAMPLE
-        Invoke-UniFiBackupDecryption -FilePath C:\Temp\pathtomybackup.unf
+        Unprotect-UniFiBackup -FilePath C:\Temp\pathtomybackup.unf
     #>
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'Low')]
     Param(
