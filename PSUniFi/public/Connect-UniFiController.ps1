@@ -4,7 +4,7 @@ function Connect-UniFiController {
     .EXAMPLE
         Connect-UniFiController -UniFiUri 'https://localhost:8443' -Username 'admin' -Password (Read-Host -AsSecureString -Prompt 'Password') -SkipCertificateCheck
     #>
-    [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $true,
             ParameterSetName = 'StdAuth')]
