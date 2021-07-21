@@ -11,7 +11,7 @@ function Get-UniFiDevice {
     )
 
     if ($All -eq $true) {
-        $SiteName = (Get-UniFiSites).Name
+        $SiteName = (Get-UniFiSite).Name
     }
 
     foreach ($site in $SiteName) {
