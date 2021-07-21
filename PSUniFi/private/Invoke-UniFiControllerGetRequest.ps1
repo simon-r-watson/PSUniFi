@@ -12,7 +12,7 @@ function Invoke-UniFiControllerGetRequest {
     if ($PSVersionTable.PSVersion.Major -eq 5) {
         Set-PowerShell5TLS
     }
-    
+
     $request = @{
         Uri        = [System.Uri]::New($GLOBAL:UniFiAuth.UriBase + $API)
         WebSession = $GLOBAL:UniFiAuth.Session
