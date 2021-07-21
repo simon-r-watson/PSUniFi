@@ -1,11 +1,11 @@
 function Set-PowerShell5SkipCertificateCheck {
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
     param (
-        
+        [switch]$Force
     )
 
     if (-not ([System.Management.Automation.PSTypeName]'ServerCertificateValidationCallback').Type) {
-        if ($PSCmdlet.ShouldProcess('PowerShell session', 'Disable TLS Certificate checking')) {
+        if ($Force -or $PSCmdlet.ShouldProcess('PowerShell session', 'Disable TLS Certificate checking')) {
             $certCallback = @'
     using System;
     using System.Net;
