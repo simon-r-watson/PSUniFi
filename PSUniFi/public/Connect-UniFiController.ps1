@@ -63,6 +63,7 @@ Disabling certificate checking. This will only affect calls made by this module.
     $loginResult = Invoke-RestMethod @loginParam
     
     if ($loginResult.meta.rc -eq 'ok') {
+        [Diagnostics.CodeAnalysis.SuppressMessageAttribute('UseDeclaredVarsMoreThanAssignments', 'Variable is not local scope')]
         $GLOBAL:UniFiAuth = [PSCustomObject]@{
             SessionName          = 'UniFiSession'
             Session              = $UniFiSession
