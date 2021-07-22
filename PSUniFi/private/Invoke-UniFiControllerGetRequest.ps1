@@ -29,6 +29,8 @@ function Invoke-UniFiControllerGetRequest {
     $response = Invoke-RestMethod @request
     if ($response.meta.rc -eq 'ok') {
         $response.data
+    } elseif ($response.authUserId) {
+        $response
     } else {
         Write-Error 'Error looking up API'
     }

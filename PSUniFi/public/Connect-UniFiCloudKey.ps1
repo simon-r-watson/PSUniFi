@@ -1,11 +1,11 @@
-function Connect-UniFiController {
+function Connect-UniFiCloudKey {
     <#
     .SYNOPSIS
-        Connect to a UniFi Network Controller
+        Connect to a UniFi CloudKey
     .DESCRIPTION
-        Connect to a UniFi Network Controller. This utilises the API used by the controllers web interface.
+        Connect to a UniFi CloudKey. This utilises the API used by the controllers web interface.
     .EXAMPLE
-        Connect-UniFiController -UniFiUri 'https://localhost:8443' -Username 'admin' -Password (Read-Host -AsSecureString -Prompt 'Password') -SkipCertificateCheck
+        Connect-UniFiCloudKey -UniFiUri 'https://localhost' -Username 'admin' -Password (Read-Host -AsSecureString -Prompt 'Password') -SkipCertificateCheck
     #>
     [CmdletBinding()]
     param (
@@ -29,17 +29,16 @@ function Connect-UniFiController {
     }
     #set login Parameters
     $body = @{
-        strict   = $true
-        password = Unprotect-Secret -Secret $Password
-        remember = $false
-        username = $Username
+        username   = $Username
+        password   = Unprotect-Secret -Secret $Password
+        rememberMe = $false
     } | ConvertTo-Json
     
     #construct login uri
     if ($UniFiUri[-1] -eq '/') {
         $UniFiUri = $UniFiUri.TrimEnd('/')
     }
-    $loginUri = [System.Uri]::New($UniFiUri + '/api/login')
+    $loginUri = [System.Uri]::New($UniFiUri + '/api/auth/login')
 
     #login
     $loginParam = @{
@@ -65,16 +64,16 @@ Disabling certificate checking. This will only affect calls made by this module.
     }
     $loginResult = Invoke-RestMethod @loginParam
     
-    if ($loginResult.meta.rc -eq 'ok') {
+    if ($loginResult.username -eq $Username) {
         [Diagnostics.CodeAnalysis.SuppressMessageAttribute('UseDeclaredVarsMoreThanAssignments', 'Variable is not local scope')]
         $GLOBAL:UniFiAuth = [PSCustomObject]@{
             SessionName          = 'UniFiSession'
             Session              = $UniFiSession
             UriBase              = $UniFiUri
             SkipCertificateCheck = $SkipCertificateCheck
-            Type                 = 'Network'
+            Type                 = 'CloudKey'
         }
     } else {
-        Write-Error 'Error connecting to the UniFi Controller'
+        Write-Error 'Error connecting to the UniFi Cloud Key'
     }
 }
