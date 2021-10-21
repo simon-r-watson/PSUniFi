@@ -16,10 +16,16 @@ function Get-UniFiDevice {
         Return all devices regardless of what site it is in. Equivalent to running "Get-UniFiDevice -SiteName (Get-UniFiSite).Name"
     .EXAMPLE
         Get-UniFiDevice -SiteName 'default'
+
+        Get devices in the default site
     .EXAMPLE
         Get-UniFiDevice -SiteName (Get-UniFiSite).Name
+
+        Get devices in all sites
     .EXAMPLE
         Get-UniFiDevice -All
+
+        Get devices in all sites
     #>
     [CmdletBinding()]
     param (

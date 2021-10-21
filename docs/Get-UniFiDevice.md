@@ -36,15 +36,21 @@ the display name you set in the controller.
 Get-UniFiDevice -SiteName 'default'
 ```
 
+Get devices in the default site
+
 ### EXAMPLE 2
 ```
 Get-UniFiDevice -SiteName (Get-UniFiSite).Name
 ```
 
+Get devices in all sites
+
 ### EXAMPLE 3
 ```
 Get-UniFiDevice -All
 ```
+
+Get devices in all sites
 
 ## PARAMETERS
 
