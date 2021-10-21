@@ -7,6 +7,13 @@ function Get-UniFiDevice {
 
         When specifying a specific site, in a multi site setup, ensure to use the "name" returned from Get-UniFiSite, as this does not match
         the display name you set in the controller.
+    .PARAMETER SiteName
+        If only using the default site (such as when using a Cloud Key Gen 2), specify the site name as 'default'
+
+        When specifying a specific site, in a multi site setup, ensure to use the "name" returned from Get-UniFiSite, as this does not match
+        the display name you set in the controller.
+    .PARAMETER All
+        Return all devices regardless of what site it is in. Equivalent to running "Get-UniFiDevice -SiteName (Get-UniFiSite).Name"
     .EXAMPLE
         Get-UniFiDevice -SiteName 'default'
     .EXAMPLE

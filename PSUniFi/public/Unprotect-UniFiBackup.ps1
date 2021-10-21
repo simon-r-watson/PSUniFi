@@ -1,14 +1,18 @@
 function Unprotect-UniFiBackup {
     <#
-
-    .NOTES
+    .SYNOPSIS
+        Decrypt a UniFi Network Controller backup
+    .DESCRIPTION
+        Decrypt a UniFi Network Controller backup
+        
         Original Script: https://github.com/justingist/POSH-Ubiquiti
 
         Many thanks to this git repo for the key and basic logic! https://github.com/zhangyoufu/unifi-backup-decrypt
         Also AES credit: https://gist.github.com/ctigeek/2a56648b923d198a6e60
 
         Output will be a tar.gz in same directory as your initial file. Use your favorite archive tool to open, such as 7-zip.
-
+    .PARAMETER FilePath
+        File path to the UniFi Backup. This must be the absolute file path.
     .EXAMPLE
         Unprotect-UniFiBackup -FilePath C:\Temp\pathtomybackup.unf
     #>
